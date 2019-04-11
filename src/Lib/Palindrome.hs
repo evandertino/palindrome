@@ -1,9 +1,13 @@
-module Lib.Palindrome (
-  isPalindrome
-) where
+module Lib.Palindrome
+  ( isPalindrome
+  )
+where
 
-import Data.Text as T
-import Lib.Internal ( stripWhiteSpace, stripPunctuation, preProcess )
+import           Data.Text                     as T
+import           Lib.Internal                   ( stripWhiteSpace
+                                                , stripPunctuation
+                                                , preProcess
+                                                )
 
 isPalindrome :: T.Text -> Bool
 isPalindrome text = cleanText == T.reverse cleanText

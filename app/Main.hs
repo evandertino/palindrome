@@ -2,9 +2,9 @@
 
 module Main where
 
-import Data.Text as T
-import Data.Text.IO as TIO
-import Lib.Palindrome (isPalindrome)
+import           Data.Text                     as T
+import           Data.Text.IO                  as TIO
+import           Lib.Palindrome                 ( isPalindrome )
 
 main :: IO ()
 main = do

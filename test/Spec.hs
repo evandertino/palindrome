@@ -5,7 +5,9 @@ import           Data.Char                      ( isPunctuation
                                                 )
 import           Data.Text                     as T
 import           Lib.Palindrome
+import           Lib.PalindromeSpec
 import           Lib.Internal
+import           Lib.InternalSpec
 
 main :: IO ()
 main = do
@@ -17,20 +19,3 @@ main = do
   quickCheck prop_isPalindromeInvariant
   putStrLn ""
   putStrLn "done!"
-
-prop_whitespaceInvariant text = stripWhiteSpace text == cleanText
-  where cleanText = T.filter (not . isSpace) text
-
-prop_punctuationInvariant text = stripPunctuation text == cleanText
-  where cleanText = T.filter (not . isPunctuation) text
-
-prop_preProcessInvariant text = preProcess text == cleanText
- where
-  cleanText =
-    (T.filter (not . isSpace) . T.filter (not . isPunctuation) . T.toLower) text
-
-prop_isPalindromeInvariant text = isPalindrome text == isAPalindrome
- where
-  cleanPalindrome =
-    T.filter (not . isSpace) . T.filter (not . isPunctuation) . T.toLower
-  isAPalindrome = (T.reverse . cleanPalindrome) text == cleanPalindrome text
